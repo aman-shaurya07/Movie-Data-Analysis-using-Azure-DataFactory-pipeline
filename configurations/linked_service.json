@@ -1,0 +1,7 @@
+{
+    "type": "AzureBlobStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=moviepipelineclistorage;AccountKey=<YOUR_ACCOUNT_KEY>;EndpointSuffix=core.windows.net"
+    }
+  }
+  

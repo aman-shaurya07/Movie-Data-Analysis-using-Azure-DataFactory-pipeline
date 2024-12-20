@@ -1,0 +1,17 @@
+{
+    "type": "AzureBlob",
+    "linkedServiceName": {
+      "referenceName": "StorageLinkedService",
+      "type": "LinkedServiceReference"
+    },
+    "typeProperties": {
+      "fileName": "movie_dataset.csv",
+      "folderPath": "input-data",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "firstRowAsHeader": true
+      }
+    }
+  }
+  

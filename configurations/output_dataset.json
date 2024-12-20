@@ -1,0 +1,15 @@
+{
+    "type": "AzureBlob",
+    "linkedServiceName": {
+      "referenceName": "StorageLinkedService",
+      "type": "LinkedServiceReference"
+    },
+    "typeProperties": {
+      "folderPath": "output-data",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ","
+      }
+    }
+  }
+  

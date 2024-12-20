@@ -1,0 +1,54 @@
+{
+    "type": "MappingDataFlow",
+    "description": "Data flow for movie data transformations",
+    "sources": [
+      {
+        "name": "SourceMovies",
+        "dataset": {
+          "referenceName": "InputDataset",
+          "type": "DatasetReference"
+        },
+        "type": "DelimitedTextSource",
+        "schema": [
+          { "name": "Series_Title", "type": "String" },
+          { "name": "Released_Year", "type": "String" },
+          { "name": "Genre", "type": "String" },
+          { "name": "Gross", "type": "Decimal" },
+          { "name": "IMDB_Rating", "type": "Decimal" },
+          { "name": "No_of_Votes", "type": "Integer" }
+        ]
+      }
+    ],
+    "transformations": [
+      {
+        "name": "FilterRows",
+        "type": "Filter",
+        "condition": "Gross IS NOT NULL AND IMDB_Rating IS NOT NULL AND No_of_Votes IS NOT NULL"
+      },
+      {
+        "name": "AddColumns",
+        "type": "DerivedColumn",
+        "columns": [
+          {
+            "name": "Revenue_Category",
+            "expression": "iif(toFloat(Gross) >= 100000000, 'Blockbuster', iif(toFloat(Gross) >= 50000000, 'Hit', 'Average'))"
+          },
+          {
+            "name": "Rating_Category",
+            "expression": "iif(toFloat(IMDB_Rating) >= 8, 'High', iif(toFloat(IMDB_Rating) >= 6, 'Medium', 'Low'))"
+          }
+        ]
+      }
+    ],
+    "sinks": [
+      {
+        "name": "SinkMovies",
+        "dataset": {
+          "referenceName": "OutputDataset",
+          "type": "DatasetReference"
+        },
+        "type": "DelimitedTextSink"
+      }
+    ]
+  }
+  

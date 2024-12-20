@@ -1,0 +1,20 @@
+{
+    "type": "Microsoft.DataFactory/factories/pipelines",
+    "activities": [
+      {
+        "name": "MovieDataTransformations",
+        "type": "DataFlow",
+        "linkedServiceName": {
+          "referenceName": "StorageLinkedService",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "dataFlow": {
+            "referenceName": "MovieTransformations",
+            "type": "DataFlowReference"
+          }
+        }
+      }
+    ]
+  }
+  
